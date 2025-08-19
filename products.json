@@ -1,26 +1,126 @@
 [
   {
-    "name": "Nike Air Max 270",
-    "price": 8999,
-    "originalPrice": 10999,
-    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/airmax270.jpg"
+    "id": 1,
+    "name": "Premium Smart Watch",
+    "price": 2999,
+    "originalPrice": 4999,
+    "stock": 8,
+    "rating": 4.6,
+    "description": "Stay connected and track your fitness with the Premium Smart Watch. Features HD AMOLED display, heart rate & SpO2 monitoring, Bluetooth calling, and 7-day battery life.",
+    "highlights": [
+      "1.75” HD AMOLED Display",
+      "7-Day Battery Life",
+      "Heart Rate & SpO2 Monitoring",
+      "Bluetooth Calling Support",
+      "1-Year Warranty"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/500x400?text=Smart+Watch",
+      "https://via.placeholder.com/500x400?text=Side+View",
+      "https://via.placeholder.com/500x400?text=Strap+Detail",
+      "https://via.placeholder.com/500x400?text=In+Box"
+    ],
+    "reviews": [
+      {"id":1, "name":"John D.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Amazing quality! Totally worth the price."},
+      {"id":2, "name":"Priya K.", "date":"Aug 9, 2025", "stars":"⭐⭐⭐⭐", "comment":"Looks premium and very comfortable to use."},
+      {"id":3, "name":"Arjun M.", "date":"Aug 8, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Fast delivery and great packaging. Love it!"}
+    ]
   },
   {
-    "name": "Apple Watch Series 9",
-    "price": 34900,
-    "originalPrice": 39900,
-    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/applewatch.jpg"
+    "id": 2,
+    "name": "Wireless Earbuds",
+    "price": 1499,
+    "originalPrice": 2499,
+    "stock": 15,
+    "rating": 4.4,
+    "description": "Enjoy crystal-clear sound and long battery life with Wireless Earbuds. Compact, comfortable, and perfect for music and calls on the go.",
+    "highlights": [
+      "High-Fidelity Sound",
+      "Up to 6 Hours Playback",
+      "Touch Controls",
+      "Bluetooth 5.0",
+      "Water Resistant"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Earbuds",
+      "https://via.placeholder.com/400x300?text=Charging+Case",
+      "https://via.placeholder.com/400x300?text=Side+View"
+    ],
+    "reviews": [
+      {"id":1, "name":"Sana R.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Best earbuds I have ever used!"},
+      {"id":2, "name":"Rahul S.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good sound quality, comfortable fit."}
+    ]
   },
   {
-    "name": "Sony WF-1000XM4 Earbuds",
-    "price": 14999,
-    "originalPrice": 17999,
-    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/sony-ears.jpg"
+    "id": 3,
+    "name": "Stylish Sneakers",
+    "price": 1999,
+    "originalPrice": 2999,
+    "stock": 10,
+    "rating": 4.3,
+    "description": "Step up your style and comfort with these Stylish Sneakers. Perfect for casual wear and sports.",
+    "highlights": [
+      "Breathable Material",
+      "Lightweight & Comfortable",
+      "Non-Slip Sole",
+      "Durable Design"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Sneakers",
+      "https://via.placeholder.com/400x300?text=Side+View",
+      "https://via.placeholder.com/400x300?text=Sole+Detail"
+    ],
+    "reviews": [
+      {"id":1, "name":"Amit P.", "date":"Aug 12, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Super comfortable and stylish!"},
+      {"id":2, "name":"Neha M.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good value for money."}
+    ]
   },
   {
-    "name": "North Face Backpack",
-    "price": 5999,
-    "originalPrice": 7999,
-    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/backpack.jpg"
+    "id": 4,
+    "name": "Backpack",
+    "price": 999,
+    "originalPrice": 1499,
+    "stock": 20,
+    "rating": 4.5,
+    "description": "Carry all your essentials safely and comfortably with this versatile Backpack. Durable and spacious for daily use.",
+    "highlights": [
+      "Multiple Compartments",
+      "Water-Resistant Material",
+      "Ergonomic Design",
+      "Lightweight & Durable"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Backpack",
+      "https://via.placeholder.com/400x300?text=Inside+Compartments",
+      "https://via.placeholder.com/400x300?text=Side+View"
+    ],
+    "reviews": [
+      {"id":1, "name":"Ravi K.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Perfect backpack for daily use!"},
+      {"id":2, "name":"Tina L.", "date":"Aug 9, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good quality and spacious."}
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Smart Fitness Band",
+    "price": 1299,
+    "originalPrice": 1999,
+    "stock": 12,
+    "rating": 4.2,
+    "description": "Track your health and fitness easily with the Smart Fitness Band. Features sleep tracking, step counter, and notifications.",
+    "highlights": [
+      "Step & Sleep Tracking",
+      "Heart Rate Monitoring",
+      "Notifications & Alerts",
+      "Long Battery Life"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Fitness+Band",
+      "https://via.placeholder.com/400x300?text=Side+View",
+      "https://via.placeholder.com/400x300?text=Wrist+View"
+    ],
+    "reviews": [
+      {"id":1, "name":"Meera S.", "date":"Aug 12, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good fitness tracker for beginners."},
+      {"id":2, "name":"Vikram D.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Excellent value and works as expected!"}
+    ]
   }
 ]
