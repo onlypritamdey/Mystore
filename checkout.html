@@ -46,16 +46,11 @@
     <!-- Billing Form -->
     <section class="bg-white p-6 rounded-lg shadow mb-6">
       <h2 class="text-lg font-semibold mb-4">Billing Details</h2>
-      <form @submit.prevent="submitOrder" class="space-y-4">
+      <form @submit.prevent="placeOrderWhatsApp" class="space-y-4">
 
         <div>
           <label class="block text-sm font-medium mb-1">Full Name</label>
           <input type="text" x-model="billing.name" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-1">Email</label>
-          <input type="email" x-model="billing.email" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
         </div>
 
         <div>
@@ -79,8 +74,8 @@
         </div>
 
         <button type="submit" 
-                class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
-          Place Order
+                class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+          Place Order via WhatsApp
         </button>
       </form>
     </section>
@@ -94,7 +89,6 @@
         cart: [],
         billing: {
           name: '',
-          email: '',
           phone: '',
           address: '',
           city: '',
@@ -107,19 +101,24 @@
           const saved = localStorage.getItem('cart');
           if (saved) this.cart = JSON.parse(saved);
         },
-        submitOrder() {
-          if (this.cart.length === 0) {
+        placeOrderWhatsApp() {
+          if(this.cart.length === 0){
             alert("Your cart is empty!");
             return;
           }
-          console.log("Order Details:", {
-            cart: this.cart,
-            billing: this.billing,
-            total: this.cartTotal
-          });
-          alert("Thank you for your order! We will contact you soon.");
+
+          // Prepare cart text
+          const cartText = this.cart.map(item => `${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('%0A');
+
+          // WhatsApp message
+          const message = `New Order:%0AName: ${this.billing.name}%0APhone: ${this.billing.phone}%0AAddress: ${this.billing.address}, ${this.billing.city} - ${this.billing.pincode}%0A%0ACart:%0A${cartText}%0A%0ATotal: ₹${this.cartTotal}`;
+
+          // WhatsApp link (replace YOUR_NUMBER with your phone number with country code, no + or spaces)
+          const waLink = `https://wa.me/918637555561?text=${message}`;
+          window.open(waLink, '_blank');
+
+          // Clear cart
           localStorage.removeItem('cart');
-          window.location.href = "index.html";
         }
       }
     }
