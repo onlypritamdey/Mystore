@@ -12,41 +12,24 @@
 
   <!-- Header -->
   <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
-    <h1 class="text-xl font-bold">Checkout</h1>
-    <a href="index.html" class="text-emerald-600 font-semibold hover:underline">← Continue Shopping</a>
+    <h1 class="text-2xl font-bold text-emerald-600">Checkout</h1>
+    <a href="index.html" class="text-emerald-500 font-semibold hover:underline">← Continue Shopping</a>
   </header>
 
-  <main class="max-w-4xl mx-auto p-6">
-
-    <!-- Cart Summary -->
-    <section class="bg-white p-6 rounded-lg shadow mb-6">
-      <h2 class="text-lg font-semibold mb-4">Your Order</h2>
-      <template x-if="cart.length === 0">
-        <p class="text-gray-500">Your cart is empty. <a href="index.html" class="text-emerald-600 underline">Go back to shop</a></p>
-      </template>
-
-      <template x-for="(item, index) in cart" :key="index">
-        <div class="flex justify-between items-center mb-4">
-          <div class="flex items-center gap-4">
-            <img :src="item.image" class="w-16 h-16 object-cover rounded">
-            <div>
-              <p class="font-medium" x-text="item.name"></p>
-              <p class="text-sm text-gray-600">₹<span x-text="item.price"></span> × <span x-text="item.quantity"></span></p>
-            </div>
-          </div>
-          <p class="font-semibold">₹<span x-text="item.price * item.quantity"></span></p>
-        </div>
-      </template>
-
-      <div class="border-t pt-4 mt-4 text-right">
-        <p class="text-lg font-semibold">Total: ₹<span x-text="cartTotal"></span></p>
-      </div>
-    </section>
+  <main class="max-w-4xl mx-auto p-6 grid md:grid-cols-2 gap-6">
 
     <!-- Billing Form -->
-    <section class="bg-white p-6 rounded-lg shadow mb-6">
-      <h2 class="text-lg font-semibold mb-4">Billing Details</h2>
-      <form @submit.prevent="placeOrderWhatsApp" class="space-y-4">
+    <section class="bg-white p-6 rounded-lg shadow space-y-4">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Billing Details</h2>
+
+      <!-- COD & Free Delivery Info -->
+      <div class="bg-emerald-50 border-l-4 border-emerald-500 p-3 text-sm text-gray-700 space-y-1">
+        <p>💰 <span class="font-semibold">COD Available</span> – Pay on Delivery</p>
+        <p>🚚 <span class="font-semibold">Free Delivery</span> on all orders above ₹999</p>
+        <p>📱 Place Order via WhatsApp instantly!</p>
+      </div>
+
+      <form @submit.prevent="placeOrderWhatsApp" class="space-y-3">
 
         <div>
           <label class="block text-sm font-medium mb-1">Full Name</label>
@@ -58,31 +41,67 @@
           <input type="tel" x-model="billing.phone" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
         </div>
 
-        <div>
-          <label class="block text-sm font-medium mb-1">Address</label>
-          <textarea x-model="billing.address" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500"></textarea>
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-1">City</label>
-          <input type="text" x-model="billing.city" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-1">Pincode</label>
-          <input type="text" x-model="billing.pincode" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium mb-1">City</label>
+            <input type="text" x-model="billing.city" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">District</label>
+            <input type="text" x-model="billing.district" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">State</label>
+            <input type="text" x-model="billing.state" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Pincode</label>
+            <input type="text" x-model="billing.pincode" required class="w-full border rounded px-3 py-2 focus:outline-emerald-500">
+          </div>
         </div>
 
         <button type="submit" 
-                class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
-          Place Order via WhatsApp
+                class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition flex justify-center items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Place Order via WhatsApp
         </button>
       </form>
     </section>
 
+    <!-- Order Summary -->
+    <section class="bg-white p-6 rounded-lg shadow space-y-4">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Your Order</h2>
+
+      <template x-if="cart.length === 0">
+        <p class="text-gray-500">Your cart is empty. <a href="index.html" class="text-emerald-600 underline">Go back to shop</a></p>
+      </template>
+
+      <template x-for="(item, index) in cart" :key="index">
+        <div class="flex justify-between items-center mb-3 p-2 border rounded">
+          <div class="flex items-center gap-3">
+            <img :src="item.image" class="w-14 h-14 object-cover rounded">
+            <div>
+              <p class="font-medium text-gray-800" x-text="item.name"></p>
+              <p class="text-sm text-gray-600">₹<span x-text="item.price"></span> × <span x-text="item.quantity"></span></p>
+            </div>
+          </div>
+          <p class="font-semibold text-gray-700">₹<span x-text="item.price * item.quantity"></span></p>
+        </div>
+      </template>
+
+      <div class="border-t pt-3 mt-3 text-right">
+        <p class="text-lg font-semibold text-gray-800">Total: ₹<span x-text="cartTotal"></span></p>
+      </div>
+
+      <!-- WhatsApp Info -->
+      <div class="bg-green-50 border-l-4 border-green-500 p-3 text-sm text-gray-700 mt-4 space-y-1">
+        <p>📲 After clicking "Place Order via WhatsApp", your order details will open in WhatsApp.</p>
+        <p>✅ You can confirm or edit your order before sending.</p>
+      </div>
+    </section>
+
   </main>
 
-  <!-- AlpineJS Store -->
+  <!-- AlpineJS -->
   <script>
     function checkout() {
       return {
@@ -90,8 +109,9 @@
         billing: {
           name: '',
           phone: '',
-          address: '',
           city: '',
+          district: '',
+          state: '',
           pincode: ''
         },
         get cartTotal() {
@@ -107,17 +127,23 @@
             return;
           }
 
-          // Prepare cart text
-          const cartText = this.cart.map(item => `${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('%0A');
+          // Prepare cart text nicely
+          const cartText = this.cart.map(item => `• ${item.name} x${item.quantity} = ₹${item.price * item.quantity}`).join('%0A');
 
-          // WhatsApp message
-          const message = `New Order:%0AName: ${this.billing.name}%0APhone: ${this.billing.phone}%0AAddress: ${this.billing.address}, ${this.billing.city} - ${this.billing.pincode}%0A%0ACart:%0A${cartText}%0A%0ATotal: ₹${this.cartTotal}`;
+          const message = `🛒 *New Order* 🛒%0A%0A` +
+                          `👤 Name: ${this.billing.name}%0A` +
+                          `📞 Phone: ${this.billing.phone}%0A` +
+                          `🏙 City: ${this.billing.city}%0A` +
+                          `📍 District: ${this.billing.district}%0A` +
+                          `🏛 State: ${this.billing.state}%0A` +
+                          `📮 Pincode: ${this.billing.pincode}%0A%0A` +
+                          `🛍 Order Items:%0A${cartText}%0A%0A` +
+                          `💰 Total: ₹${this.cartTotal}%0A%0A` +
+                          `💳 Payment: COD`;
 
-          // WhatsApp link (replace YOUR_NUMBER with your phone number with country code, no + or spaces)
-          const waLink = `https://wa.me/918637555561?text=${message}`;
+          const waLink = `https://wa.me/91YOUR_NUMBER?text=${message}`;
           window.open(waLink, '_blank');
 
-          // Clear cart
           localStorage.removeItem('cart');
         }
       }
