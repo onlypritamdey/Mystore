@@ -275,9 +275,7 @@
           localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         checkout() {
-          alert("Checkout complete!");
-          this.cart = [];
-          localStorage.removeItem('cart');
+          window.location.href = 'checkout.html';
         },
         get deliveryCountdown() { return "3h 45m"; },
 
