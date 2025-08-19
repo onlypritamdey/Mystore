@@ -21,10 +21,13 @@
     <!-- Order Summary -->
     <section class="bg-white p-4 rounded-xl shadow space-y-3">
       <h2 class="text-lg font-semibold text-gray-700">Your Order</h2>
-     <!-- Empty Cart Message -->
-<template x-if="cart.length === 0">
-  <p class="text-gray-500 text-center py-4">🛒 Your cart is empty.</p>
-</template>
+
+      <!-- Empty Cart Message -->
+      <template x-if="cart.length === 0">
+        <p class="text-gray-500 text-center py-4">🛒 Your cart is empty.</p>
+      </template>
+
+      <!-- Cart Items -->
       <template x-for="item in cart" :key="item.id">
         <div class="flex justify-between items-center py-2 border-b">
           <div>
@@ -40,8 +43,8 @@
         </div>
       </template>
 
-      <!-- Totals -->
-      <div class="py-2 space-y-1">
+      <!-- Totals (only if cart has items) -->
+      <div x-show="cart.length > 0" class="py-2 space-y-1">
         <p class="flex justify-between text-gray-500 text-sm">
           <span>MRP Total:</span>
           <span>₹<span x-text="mrpTotal"></span></span>
@@ -60,11 +63,11 @@
         </p>
       </div>
 
-      <p class="text-sm text-red-500 font-medium mt-1">🔥 Hurry! Grab this deal now!</p>
+      <p class="text-sm text-red-500 font-medium mt-1" x-show="cart.length > 0">🔥 Hurry! Grab this deal now!</p>
     </section>
 
     <!-- Shipping Address -->
-    <section class="bg-white p-4 rounded-xl shadow space-y-4">
+    <section class="bg-white p-4 rounded-xl shadow space-y-4" x-show="cart.length > 0">
       <h2 class="text-lg font-semibold text-gray-700">Shipping Address</h2>
 
       <!-- Badges -->
@@ -129,7 +132,7 @@
             alert("Your cart is empty!");
             return;
           }
-          const cartText = this.cart.map(item => `• ${item.name} x${item.quantity} = ₹${item.price*item.quantity}`).join('%0A');
+          const cartText = this.cart.map(item => `• *${item.name}* x${item.quantity} = ₹${item.price*item.quantity}`).join('%0A');
           const message = `🛒 *New Order* 🛒%0A%0A` +
                           `👤 Name: ${this.billing.name}%0A` +
                           `📞 Phone: ${this.billing.phone}%0A` +
@@ -143,6 +146,7 @@
           const waLink = `https://wa.me/918637555561?text=${message}`;
           window.open(waLink,'_blank');
           localStorage.removeItem('cart');
+          this.cart = [];
         }
       }
     }
