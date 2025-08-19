@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Nike Air Max 270",
+    "price": 8999,
+    "originalPrice": 10999,
+    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/airmax270.jpg"
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "price": 34900,
+    "originalPrice": 39900,
+    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/applewatch.jpg"
+  },
+  {
+    "name": "Sony WF-1000XM4 Earbuds",
+    "price": 14999,
+    "originalPrice": 17999,
+    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/sony-ears.jpg"
+  },
+  {
+    "name": "North Face Backpack",
+    "price": 5999,
+    "originalPrice": 7999,
+    "image": "https://raw.githubusercontent.com/<username>/<repo>/main/images/backpack.jpg"
+  }
+]
