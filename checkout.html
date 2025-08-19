@@ -21,7 +21,10 @@
     <!-- Order Summary -->
     <section class="bg-white p-4 rounded-xl shadow space-y-3">
       <h2 class="text-lg font-semibold text-gray-700">Your Order</h2>
-
+     <!-- Empty Cart Message -->
+<template x-if="cart.length === 0">
+  <p class="text-gray-500 text-center py-4">🛒 Your cart is empty.</p>
+</template>
       <template x-for="item in cart" :key="item.id">
         <div class="flex justify-between items-center py-2 border-b">
           <div>
