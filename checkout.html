@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body x-data="checkout()" x-init="init()" class="bg-gray-100">
+<body x-data="checkout()" x-init="init()" class="bg-gray-100  pb-24">
 
   <!-- Header -->
   <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
@@ -77,7 +77,7 @@
         </span>
       </div>
 
-      <form @submit.prevent="placeOrderWhatsApp" class="space-y-3 pb-24">
+      <form @submit.prevent="placeOrderWhatsApp" class="space-y-3">
 
         <input type="text" x-model="billing.name" placeholder="Full Name" required
                class="w-full border rounded px-3 py-2 focus:outline-emerald-500 shadow-sm">
