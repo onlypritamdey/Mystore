@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PB COLLECTION</title></title>
+  <title>PB COLLECTION</title>
+  <meta name="description" content="PB COLLECTION - Affordable Fashion & Lifestyle. Shop men's, women's, boys' and girls' clothing at the best prices with free shipping over ₹999.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body x-data="store" class="bg-gray-100" x-init="init()">
+<body x-data="store" class="bg-gray-100" x-init="init()" @keydown.escape="isCartOpen=false">
 
   <!-- Announcement Bar -->
   <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium">
@@ -44,9 +45,10 @@
         
         <!-- Clickable Image -->
         <a :href="'product.html?id=' + product.id" class="relative block w-full h-48 md:h-56 overflow-hidden">
-          <img :src="product.image" :alt="product.name" 
+          <img :src="product.image" :alt="product.name" loading="lazy"
                class="w-full h-full object-cover hover:scale-105 transition duration-300 rounded-t-xl">
-          <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded"
+          <span x-show="product.originalPrice > product.price"
+                class="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded"
                 x-text="Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) + '% OFF'"></span>
         </a>
 
@@ -58,20 +60,18 @@
 
           <div class="mt-1">
             <p class="text-lg text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
-            <p class="text-sm text-gray-500 line-through">₹<span x-text="product.originalPrice"></span></p>
-            <p class="text-xs text-red-500 font-medium">You save ₹<span x-text="product.originalPrice - product.price"></span></p>
+            <p class="text-sm text-gray-500 line-through" x-show="product.originalPrice > product.price">
+              ₹<span x-text="product.originalPrice"></span>
+            </p>
+            <p class="text-xs text-red-500 font-medium" x-show="product.originalPrice > product.price">
+              You save ₹<span x-text="product.originalPrice - product.price"></span>
+            </p>
           </div>
 
           <!-- Star Rating -->
           <div class="flex items-center text-yellow-400 text-sm mt-2">
-            <template x-for="i in Math.floor(product.rating)">
-              <i class="fa-solid fa-star"></i>
-            </template>
-            <template x-if="product.rating % 1 >= 0.5">
-              <i class="fa-solid fa-star-half-stroke"></i>
-            </template>
-            <template x-for="i in 5 - Math.ceil(product.rating)">
-              <i class="fa-regular fa-star"></i>
+            <template x-for="(star, i) in getStars(product.rating)" :key="i">
+              <i :class="star === 'full' ? 'fa-solid fa-star' : star === 'half' ? 'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
             </template>
             <span class="ml-2 text-gray-500 text-xs" x-text="'(' + (product.reviews ? product.reviews.length : 0) + ')'"></span>
           </div>
@@ -97,11 +97,14 @@
     </div>
     <div class="flex-1 overflow-y-auto p-4 space-y-4">
       <template x-if="cart.length === 0">
-        <p class="text-gray-500">Your cart is empty.</p>
+        <div class="text-center text-gray-500">
+          <p>Your cart is empty.</p>
+          <a href="#products" class="mt-2 inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700">Shop Now</a>
+        </div>
       </template>
       <template x-for="(item, index) in cart" :key="index">
         <div class="flex items-center gap-3 border-b pb-3">
-          <img :src="item.image" class="w-16 h-16 object-cover rounded">
+          <img :src="item.image" class="w-16 h-16 object-cover rounded" loading="lazy" :alt="item.name">
           <div class="flex-1">
             <p class="font-medium" x-text="item.name"></p>
             <p class="text-sm text-gray-600">
@@ -124,7 +127,7 @@
   </div>
 
   <!-- Footer -->
-   <footer class="bg-gray-900 text-white mt-12">
+  <footer class="bg-gray-900 text-white mt-12">
     <!-- Trust Badges -->
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6 py-8 text-center">
       <div>
@@ -156,21 +159,21 @@
         <div class="border-b border-gray-700 pb-2">
           <button @click="open === 1 ? open = null : open = 1" class="flex justify-between w-full text-left">
             <span>What is the shipping time?</span>
-            <i :class="open === 1 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+            <i class="fa-solid" :class="open === 1 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
           </button>
           <p x-show="open === 1" class="mt-2 text-gray-400 text-sm">We usually deliver within 3–7 business days across India.</p>
         </div>
         <div class="border-b border-gray-700 pb-2">
           <button @click="open === 2 ? open = null : open = 2" class="flex justify-between w-full text-left">
             <span>How can I return a product?</span>
-            <i :class="open === 2 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+            <i class="fa-solid" :class="open === 2 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
           </button>
           <p x-show="open === 2" class="mt-2 text-gray-400 text-sm">We offer a 7-day return policy. Contact support to initiate a return.</p>
         </div>
         <div class="border-b border-gray-700 pb-2">
           <button @click="open === 3 ? open = null : open = 3" class="flex justify-between w-full text-left">
             <span>Do you provide Cash on Delivery?</span>
-            <i :class="open === 3 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+            <i class="fa-solid" :class="open === 3 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
           </button>
           <p x-show="open === 3" class="mt-2 text-gray-400 text-sm">Yes, we offer COD on selected products.</p>
         </div>
@@ -183,8 +186,8 @@
         <div class="text-center md:text-left">
           <h4 class="font-semibold text-lg">About Us</h4>
           <p class="text-gray-400 text-sm mt-1 max-w-md">
-            Welcome to My Store! We bring you top-quality fashion & gadgets at the best prices.
-            Our mission is to provide affordable style & technology to everyone.
+            Welcome to PB COLLECTION! We bring you top-quality fashion & lifestyle at the best prices.
+            Our mission is to provide affordable style to everyone.
           </p>
         </div>
         <div class="flex gap-4 text-2xl">
@@ -198,10 +201,9 @@
 
     <!-- Copyright -->
     <div class="bg-gray-950 text-gray-400 text-center text-sm py-4">
-      © 2025 My Store. All rights reserved.
+      © 2025 PB COLLECTION. All rights reserved.
     </div>
   </footer>         
-
 
   <!-- Alpine Store State -->
   <script>
@@ -252,8 +254,22 @@
         },
 
         loadCart() {
-          const saved = localStorage.getItem('cart');
-          if (saved) this.cart = JSON.parse(saved);
+          try {
+            const saved = localStorage.getItem('cart');
+            this.cart = saved ? JSON.parse(saved) : [];
+          } catch (e) {
+            this.cart = [];
+          }
+        },
+
+        getStars(rating) {
+          let stars = [];
+          for (let i = 1; i <= 5; i++) {
+            if (rating >= i) stars.push('full');
+            else if (rating >= i - 0.5) stars.push('half');
+            else stars.push('empty');
+          }
+          return stars;
         },
 
         init() {
