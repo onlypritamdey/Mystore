@@ -5,21 +5,14 @@
 
     <!-- Navigation -->
     <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
-      <a href="#products" class="hover:text-emerald-600">Men</a>
-      <a href="#products" class="hover:text-emerald-600">Women</a>
-      <a href="#products" class="hover:text-emerald-600">Boys</a>
-      <a href="#products" class="hover:text-emerald-600">Girls</a>
+      <a href="#men" class="hover:text-emerald-600">Men</a>
+      <a href="#women" class="hover:text-emerald-600">Women</a>
+      <a href="#boys" class="hover:text-emerald-600">Boys</a>
+      <a href="#girls" class="hover:text-emerald-600">Girls</a>
     </nav>
 
     <!-- Right Section -->
     <div class="flex items-center space-x-4">
-      <!-- Search -->
-      <div class="relative">
-        <input type="text" placeholder="Search..."
-               class="border rounded-lg px-3 py-1 w-40 md:w-56 focus:ring-emerald-500 focus:border-emerald-500">
-        <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
-      </div>
-
       <!-- Cart Icon -->
       <button @click="$root.toggleCart()" class="relative text-gray-700 hover:text-emerald-600">
         <i class="fas fa-shopping-cart text-xl"></i>
