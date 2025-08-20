@@ -114,13 +114,7 @@
   <!-- Alpine Store -->
   <script src="store.js"></script>
   <script>
-    // Load header
-    fetch('header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("header-component").innerHTML = html;
-        Alpine.initTree(document.getElementById("header-component"));
-      });
+    
 
     // Load footer
     fetch('footer.html')
