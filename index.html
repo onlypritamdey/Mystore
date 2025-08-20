@@ -3,79 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PB COLLECTION</title>
+  <title>PB COLLECTION - Fashion Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body x-data="store" x-init="init()" class="bg-gray-100">
 
-  <!-- Announcement Bar -->
-  <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium">
-    🎉 Free Shipping on Orders Above ₹999!
-  </div>
-
   <!-- Header -->
   <div id="header"></div>
 
   <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-72 md:h-96" 
-           style="background-image: url('Hero.JPG');">
-    <div class="absolute inset-0 flex flex-col justify-end items-center text-center text-white p-4">
-      <a href="#products" class="bg-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
-        Shop Now
-      </a>
-    </div>
+  <section class="bg-gradient-to-r from-emerald-500 to-green-600 text-white py-16 text-center">
+    <h1 class="text-4xl font-bold">Welcome to PB COLLECTION</h1>
+    <p class="mt-4 text-lg">Trendy Fashion & Accessories at Best Prices</p>
+    <a href="#products" class="mt-6 inline-block bg-white text-emerald-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">Shop Now</a>
   </section>
 
-  <!-- Product Grid -->
-  <main id="products" 
-        class="max-w-6xl mx-auto p-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <template x-for="product in products" :key="product.id">
-      <div class="bg-white border rounded-xl shadow hover:shadow-lg transition overflow-hidden">
-        
-        <!-- Clickable Image -->
-        <a :href="'product.html?id=' + product.id" class="relative block w-full h-48 md:h-56 overflow-hidden">
-          <img :src="product.image" :alt="product.name" 
-               class="w-full h-full object-cover hover:scale-105 transition duration-300 rounded-t-xl">
-          <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded"
-                x-text="Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) + '% OFF'"></span>
-        </a>
+  <!-- Product Section -->
+  <main id="products" class="max-w-7xl mx-auto px-6 py-10">
+    <h2 class="text-2xl font-bold mb-6">🔥 Best Sellers</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <template x-for="product in products" :key="product.id">
+        <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 relative">
+          <!-- Discount Badge -->
+          <span x-show="product.discount"
+                class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+            <span x-text="product.discount + '% OFF'"></span>
+          </span>
 
-        <!-- Info Section -->
-        <div class="p-4">
-          <a :href="'product.html?id=' + product.id">
-            <p class="font-semibold text-gray-800 truncate" x-text="product.name"></p>
-          </a>
+          <img :src="product.image" alt="" class="w-full h-40 object-cover rounded">
+          <h3 class="mt-3 font-semibold text-gray-800 truncate" x-text="product.name"></h3>
+          <p class="text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
+          <p class="text-sm text-gray-500 line-through" x-show="product.mrp">₹<span x-text="product.mrp"></span></p>
+          <p class="text-xs text-red-500" x-show="product.mrp">You save ₹<span x-text="product.mrp - product.price"></span></p>
 
-          <div class="mt-1">
-            <p class="text-lg text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
-            <p class="text-sm text-gray-500 line-through">₹<span x-text="product.originalPrice"></span></p>
-            <p class="text-xs text-red-500 font-medium">You save ₹<span x-text="product.originalPrice - product.price"></span></p>
-          </div>
-
-          <!-- Star Rating -->
-          <div class="flex items-center text-yellow-400 text-sm mt-2">
-            <template x-for="i in Math.floor(product.rating)">
-              <i class="fa-solid fa-star"></i>
+          <!-- Rating -->
+          <div class="flex items-center text-yellow-400 text-sm mt-1">
+            <template x-for="i in 5">
+              <i :class="i <= product.rating ? 'fas fa-star' : 'far fa-star'"></i>
             </template>
-            <template x-if="product.rating % 1 >= 0.5">
-              <i class="fa-solid fa-star-half-stroke"></i>
-            </template>
-            <template x-for="i in 5 - Math.ceil(product.rating)">
-              <i class="fa-regular fa-star"></i>
-            </template>
-            <span class="ml-2 text-gray-500 text-xs" x-text="'(' + (product.reviews ? product.reviews.length : 0) + ')'"></span>
+            <span class="ml-2 text-gray-500 text-xs" x-text="'(' + product.reviews + ')'"></span>
           </div>
 
           <!-- Add to Cart -->
           <button @click="addToCart(product)"
-                  class="mt-3 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+                  class="mt-3 w-full bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700">
             Add to Cart
           </button>
         </div>
-      </div>
-    </template>
+      </template>
+    </div>
   </main>
 
   <!-- Cart Drawer -->
@@ -84,83 +62,80 @@
   <!-- Footer -->
   <div id="footer"></div>
 
-  <!-- Alpine Store State -->
+  <!-- Alpine Store Script -->
   <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('store', () => ({
-        products: [],
+    function store() {
+      return {
+        products: [
+          { id: 1, name: "Wireless Earbuds", price: 1499, mrp: 2999, discount: 50, rating: 4, reviews: 120, image: "https://via.placeholder.com/300" },
+          { id: 2, name: "Smart Fitness Band", price: 1299, mrp: 1999, discount: 35, rating: 5, reviews: 200, image: "https://via.placeholder.com/300" },
+          { id: 3, name: "Men's Casual Shirt", price: 999, mrp: 1499, discount: 30, rating: 4, reviews: 80, image: "https://via.placeholder.com/300" },
+          { id: 4, name: "Women's Handbag", price: 1799, mrp: 2499, discount: 28, rating: 5, reviews: 150, image: "https://via.placeholder.com/300" }
+        ],
         cart: [],
         isCartOpen: false,
 
-        get cartCount() {
-          return this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        init() {
+          this.cart = JSON.parse(localStorage.getItem("cart")) || [];
         },
-        get cartTotal() {
-          return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        },
-
         toggleCart() {
           this.isCartOpen = !this.isCartOpen;
         },
-
         addToCart(product) {
-          let existing = this.cart.find(item => item.id === product.id);
-          if (existing) {
-            existing.quantity++;
+          let item = this.cart.find(p => p.id === product.id);
+          if (item) {
+            item.qty++;
           } else {
-            this.cart.push({ ...product, quantity: 1 });
+            this.cart.push({ ...product, qty: 1 });
           }
           this.saveCart();
         },
-
-        increaseQty(index) { 
-          this.cart[index].quantity++;
+        increaseQty(id) {
+          let item = this.cart.find(p => p.id === id);
+          if (item) { item.qty++; this.saveCart(); }
+        },
+        decreaseQty(id) {
+          let item = this.cart.find(p => p.id === id);
+          if (item && item.qty > 1) { item.qty--; this.saveCart(); }
+          else { this.removeFromCart(id); }
+        },
+        removeFromCart(id) {
+          this.cart = this.cart.filter(p => p.id !== id);
           this.saveCart();
         },
-
-        decreaseQty(index) {
-          if (this.cart[index].quantity > 1) this.cart[index].quantity--;
-          else this.cart.splice(index, 1);
-          this.saveCart();
+        get cartCount() {
+          return this.cart.reduce((sum, item) => sum + item.qty, 0);
         },
-
-        checkout() {
-          window.location.href = 'checkout.html';
+        get cartTotal() {
+          return this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
         },
-
         saveCart() {
-          localStorage.setItem('cart', JSON.stringify(this.cart));
-        },
-
-        loadCart() {
-          const saved = localStorage.getItem('cart');
-          if (saved) this.cart = JSON.parse(saved);
-        },
-
-        init() {
-          this.loadCart();
-          fetch('products.json')
-            .then(res => res.json())
-            .then(data => { this.products = data })
-            .catch(err => console.error("Failed to load products.json:", err));
+          localStorage.setItem("cart", JSON.stringify(this.cart));
         }
-      }))
-    })
+      }
+    }
+  </script>
 
-    // Load components dynamically
+  <!-- Component Loader -->
+  <script>
     async function loadComponent(id, file) {
       const el = document.getElementById(id);
       if (el) {
         const res = await fetch(file);
         const html = await res.text();
         el.innerHTML = html;
+
+        // Re-init Alpine for dynamically loaded content
+        if (window.Alpine) {
+          Alpine.initTree(el);
+        }
       }
     }
 
+    // Load shared components
     loadComponent("header", "components/header.html");
-    loadComponent("cart-drawer", "components/cart-drawer.html");
     loadComponent("footer", "components/footer.html");
+    loadComponent("cart-drawer", "components/cart-drawer.html");
   </script>
-
 </body>
 </html>
