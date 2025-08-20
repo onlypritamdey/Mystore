@@ -54,15 +54,33 @@
     </div>
   </section>
 
-  <!-- Category Navbar -->
-<section class="bg-white shadow mt-4">
-  <div class="max-w-6xl mx-auto flex justify-center gap-6 py-3 px-4">
-    <a href="#boys" class="text-gray-800 font-semibold hover:text-emerald-600 transition">Boys</a>
-    <a href="#girls" class="text-gray-800 font-semibold hover:text-emerald-600 transition">Girls</a>
-    <a href="#men" class="text-gray-800 font-semibold hover:text-emerald-600 transition">Men</a>
-    <a href="#women" class="text-gray-800 font-semibold hover:text-emerald-600 transition">Women</a>
+  <!-- Stylish Category Navbar -->
+<section class="bg-gray-50 py-6">
+  <div class="max-w-6xl mx-auto flex justify-center gap-6 px-4 flex-wrap md:flex-nowrap overflow-x-auto scrollbar-hide">
+    
+    <a href="#boys" class="flex flex-col items-center px-4 py-3 bg-white rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+      <i class="fa-solid fa-child text-2xl text-emerald-600 mb-2"></i>
+      <span class="font-semibold text-gray-800">Boys</span>
+    </a>
+
+    <a href="#girls" class="flex flex-col items-center px-4 py-3 bg-white rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+      <i class="fa-solid fa-female text-2xl text-pink-500 mb-2"></i>
+      <span class="font-semibold text-gray-800">Girls</span>
+    </a>
+
+    <a href="#men" class="flex flex-col items-center px-4 py-3 bg-white rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+      <i class="fa-solid fa-male text-2xl text-blue-600 mb-2"></i>
+      <span class="font-semibold text-gray-800">Men</span>
+    </a>
+
+    <a href="#women" class="flex flex-col items-center px-4 py-3 bg-white rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+      <i class="fa-solid fa-female text-2xl text-purple-600 mb-2"></i>
+      <span class="font-semibold text-gray-800">Women</span>
+    </a>
+
   </div>
 </section>
+
 
   <!-- Product Grid -->
   <main id="products" 
