@@ -1,0 +1,86 @@
+<footer class="bg-gray-900 text-white mt-12">
+  <!-- Trust Badges -->
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6 py-8 text-center">
+    <div>
+      <i class="fa-solid fa-lock text-3xl text-emerald-500 mb-2"></i>
+      <p class="font-semibold">Secure Payment</p>
+      <p class="text-sm text-gray-400">100% safe checkout</p>
+    </div>
+    <div>
+      <i class="fa-solid fa-truck-fast text-3xl text-emerald-500 mb-2"></i>
+      <p class="font-semibold">Fast Delivery</p>
+      <p class="text-sm text-gray-400">Across India</p>
+    </div>
+    <div>
+      <i class="fa-solid fa-rotate-left text-3xl text-emerald-500 mb-2"></i>
+      <p class="font-semibold">Easy Returns</p>
+      <p class="text-sm text-gray-400">7-day return policy</p>
+    </div>
+    <div>
+      <i class="fa-solid fa-headset text-3xl text-emerald-500 mb-2"></i>
+      <p class="font-semibold">24/7 Support</p>
+      <p class="text-sm text-gray-400">Always here for you</p>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="max-w-3xl mx-auto px-6 py-8">
+    <h3 class="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
+    <div x-data="{ open: null }" class="space-y-3">
+      <div class="border-b border-gray-700 pb-2">
+        <button @click="open === 1 ? open = null : open = 1" 
+                class="flex justify-between w-full text-left"
+                :aria-expanded="open === 1 ? 'true' : 'false'">
+          <span>What is the shipping time?</span>
+          <i class="fa-solid" :class="open === 1 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+        <p x-show="open === 1" class="mt-2 text-gray-400 text-sm">We usually deliver within 3–7 business days across India.</p>
+      </div>
+      <div class="border-b border-gray-700 pb-2">
+        <button @click="open === 2 ? open = null : open = 2" 
+                class="flex justify-between w-full text-left"
+                :aria-expanded="open === 2 ? 'true' : 'false'">
+          <span>How can I return a product?</span>
+          <i class="fa-solid" :class="open === 2 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+        <p x-show="open === 2" class="mt-2 text-gray-400 text-sm">We offer a 7-day return policy. Contact support to initiate a return.</p>
+      </div>
+      <div class="border-b border-gray-700 pb-2">
+        <button @click="open === 3 ? open = null : open = 3" 
+                class="flex justify-between w-full text-left"
+                :aria-expanded="open === 3 ? 'true' : 'false'">
+          <span>Do you provide Cash on Delivery?</span>
+          <i class="fa-solid" :class="open === 3 ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </button>
+        <p x-show="open === 3" class="mt-2 text-gray-400 text-sm">Yes, we offer COD on selected products.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About + Social -->
+  <div class="bg-gray-800 px-6 py-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold text-lg">About Us</h4>
+        <p class="text-gray-400 text-sm mt-1 max-w-md">
+          Welcome to PB COLLECTION! We bring you top-quality fashion & lifestyle at the best prices. 
+          Our mission is to provide affordable style to everyone.
+        </p>
+        <p class="text-gray-400 text-sm mt-2">
+          Need help? <a href="mailto:support@pbcollection.com" class="text-emerald-500 hover:underline">Contact Support</a>
+        </p>
+      </div>
+      <div class="flex gap-4 text-2xl">
+        <a href="#" class="hover:text-emerald-500" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="hover:text-emerald-500" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-emerald-500" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="hover:text-emerald-500" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="bg-gray-950 text-gray-400 text-center text-sm py-4">
+    © 2025 PB COLLECTION. All rights reserved.
+  </div>
+</footer>
