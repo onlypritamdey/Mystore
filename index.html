@@ -3,23 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PB COLLECTION</title>
+  <title>PB COLLECTION</title></title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100">
+<body x-data="store" class="bg-gray-100" x-init="init()">
 
   <!-- Announcement Bar -->
   <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium">
     🎉 Free Shipping on Orders Above ₹999!
   </div>
 
-  <!-- Common Components -->
-  <div id="header"></div>
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-xl font-bold">PB COLLECTION</h1>
+    <button @click="toggleCart()" class="relative">
+      <i class="fa-solid fa-cart-shopping text-2xl"></i>
+      <span x-show="cartCount > 0"
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1"
+            x-text="cartCount"></span>
+    </button>
+  </header>
 
   <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-72 md:h-96" style="background-image: url('Hero.JPG');">
+  <section class="relative bg-cover bg-center h-72 md:h-96" 
+           style="background-image: url('Hero.JPG');">
     <div class="absolute inset-0 flex flex-col justify-end items-center text-center text-white p-4">
       <a href="#products" class="bg-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
         Shop Now
@@ -28,39 +37,235 @@
   </section>
 
   <!-- Product Grid -->
-  <main id="products"
+  <main id="products" 
         class="max-w-6xl mx-auto p-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <!-- product cards template stays as-is -->
+    <template x-for="product in products" :key="product.id">
+      <div class="bg-white border rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+        
+        <!-- Clickable Image -->
+        <a :href="'product.html?id=' + product.id" class="relative block w-full h-48 md:h-56 overflow-hidden">
+          <img :src="product.image" :alt="product.name" 
+               class="w-full h-full object-cover hover:scale-105 transition duration-300 rounded-t-xl">
+          <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded"
+                x-text="Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) + '% OFF'"></span>
+        </a>
+
+        <!-- Info Section -->
+        <div class="p-4">
+          <a :href="'product.html?id=' + product.id">
+            <p class="font-semibold text-gray-800 truncate" x-text="product.name"></p>
+          </a>
+
+          <div class="mt-1">
+            <p class="text-lg text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
+            <p class="text-sm text-gray-500 line-through">₹<span x-text="product.originalPrice"></span></p>
+            <p class="text-xs text-red-500 font-medium">You save ₹<span x-text="product.originalPrice - product.price"></span></p>
+          </div>
+
+          <!-- Star Rating -->
+          <div class="flex items-center text-yellow-400 text-sm mt-2">
+            <template x-for="i in Math.floor(product.rating)">
+              <i class="fa-solid fa-star"></i>
+            </template>
+            <template x-if="product.rating % 1 >= 0.5">
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </template>
+            <template x-for="i in 5 - Math.ceil(product.rating)">
+              <i class="fa-regular fa-star"></i>
+            </template>
+            <span class="ml-2 text-gray-500 text-xs" x-text="'(' + (product.reviews ? product.reviews.length : 0) + ')'"></span>
+          </div>
+
+          <!-- Add to Cart -->
+          <button @click="addToCart(product)"
+                  class="mt-3 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </template>
   </main>
 
-  <div id="cart"></div>
-  <div id="footer"></div>
+  <!-- Cart Drawer -->
+  <div x-show="isCartOpen" class="fixed inset-0 bg-black bg-opacity-40 z-40"
+       @click="toggleCart()" x-transition.opacity></div>
+  <div class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg z-50 flex flex-col transform transition-transform duration-300"
+       :class="isCartOpen ? 'translate-x-0' : 'translate-x-full'">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="font-semibold text-lg">Your Cart</h2>
+      <button @click="toggleCart()"><i class="fa-solid fa-xmark text-xl"></i></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-4 space-y-4">
+      <template x-if="cart.length === 0">
+        <p class="text-gray-500">Your cart is empty.</p>
+      </template>
+      <template x-for="(item, index) in cart" :key="index">
+        <div class="flex items-center gap-3 border-b pb-3">
+          <img :src="item.image" class="w-16 h-16 object-cover rounded">
+          <div class="flex-1">
+            <p class="font-medium" x-text="item.name"></p>
+            <p class="text-sm text-gray-600">
+              ₹<span x-text="item.price * item.quantity"></span>
+              <span class="ml-2"> (x<span x-text="item.quantity"></span>)</span>
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button @click="decreaseQty(index)" class="px-2 py-1 border rounded text-gray-600">-</button>
+            <button @click="increaseQty(index)" class="px-2 py-1 border rounded text-gray-600">+</button>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="p-4 border-t">
+      <p class="font-semibold">Total: ₹<span x-text="cartTotal"></span></p>
+      <button class="mt-3 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700"
+              @click="checkout()">Checkout</button>
+    </div>
+  </div>
 
-  <!-- Store Logic -->
-  <script src="store.js"></script>
+  <!-- Footer -->
+   <footer class="bg-gray-900 text-white mt-12">
+    <!-- Trust Badges -->
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6 py-8 text-center">
+      <div>
+        <i class="fa-solid fa-lock text-3xl text-emerald-500 mb-2"></i>
+        <p class="font-semibold">Secure Payment</p>
+        <p class="text-sm text-gray-400">100% safe checkout</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-truck-fast text-3xl text-emerald-500 mb-2"></i>
+        <p class="font-semibold">Fast Delivery</p>
+        <p class="text-sm text-gray-400">Across India</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-rotate-left text-3xl text-emerald-500 mb-2"></i>
+        <p class="font-semibold">Easy Returns</p>
+        <p class="text-sm text-gray-400">7-day return policy</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-headset text-3xl text-emerald-500 mb-2"></i>
+        <p class="font-semibold">24/7 Support</p>
+        <p class="text-sm text-gray-400">Always here for you</p>
+      </div>
+    </div>
 
-  <!-- Load Components -->
+    <!-- FAQ Section -->
+    <div class="max-w-3xl mx-auto px-6 py-8">
+      <h3 class="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
+      <div x-data="{ open: null }" class="space-y-3">
+        <div class="border-b border-gray-700 pb-2">
+          <button @click="open === 1 ? open = null : open = 1" class="flex justify-between w-full text-left">
+            <span>What is the shipping time?</span>
+            <i :class="open === 1 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+          </button>
+          <p x-show="open === 1" class="mt-2 text-gray-400 text-sm">We usually deliver within 3–7 business days across India.</p>
+        </div>
+        <div class="border-b border-gray-700 pb-2">
+          <button @click="open === 2 ? open = null : open = 2" class="flex justify-between w-full text-left">
+            <span>How can I return a product?</span>
+            <i :class="open === 2 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+          </button>
+          <p x-show="open === 2" class="mt-2 text-gray-400 text-sm">We offer a 7-day return policy. Contact support to initiate a return.</p>
+        </div>
+        <div class="border-b border-gray-700 pb-2">
+          <button @click="open === 3 ? open = null : open = 3" class="flex justify-between w-full text-left">
+            <span>Do you provide Cash on Delivery?</span>
+            <i :class="open === 3 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fa-solid"></i>
+          </button>
+          <p x-show="open === 3" class="mt-2 text-gray-400 text-sm">Yes, we offer COD on selected products.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About + Social -->
+    <div class="bg-gray-800 px-6 py-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <h4 class="font-semibold text-lg">About Us</h4>
+          <p class="text-gray-400 text-sm mt-1 max-w-md">
+            Welcome to My Store! We bring you top-quality fashion & gadgets at the best prices.
+            Our mission is to provide affordable style & technology to everyone.
+          </p>
+        </div>
+        <div class="flex gap-4 text-2xl">
+          <a href="#" class="hover:text-emerald-500"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="hover:text-emerald-500"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="hover:text-emerald-500"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="hover:text-emerald-500"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="bg-gray-950 text-gray-400 text-center text-sm py-4">
+      © 2025 My Store. All rights reserved.
+    </div>
+  </footer>         
+
+
+  <!-- Alpine Store State -->
   <script>
-    async function loadComponent(id, file) {
-      const res = await fetch(`components/${file}`);
-      const html = await res.text();
-      document.getElementById(id).innerHTML = html;
-    }
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('store', () => ({
+        products: [],
+        cart: [],
+        isCartOpen: false,
 
-    async function initPage() {
-      await Promise.all([
-        loadComponent("header", "header.html"),
-        loadComponent("cart", "cart.html"),
-        loadComponent("footer", "footer.html")
-      ]);
-      
-      // Now re-initialize Alpine with store.js attached
-      document.body.setAttribute("x-data", "store");
-      document.body.setAttribute("x-init", "init()");
-      Alpine.initTree(document.body);
-    }
+        get cartCount() {
+          return this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        },
+        get cartTotal() {
+          return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        },
 
-    initPage();
+        toggleCart() {
+          this.isCartOpen = !this.isCartOpen;
+        },
+
+        addToCart(product) {
+          let existing = this.cart.find(item => item.id === product.id);
+          if (existing) {
+            existing.quantity++;
+          } else {
+            this.cart.push({ ...product, quantity: 1 });
+          }
+          this.saveCart();
+        },
+
+        increaseQty(index) { 
+          this.cart[index].quantity++;
+          this.saveCart();
+        },
+
+        decreaseQty(index) {
+          if (this.cart[index].quantity > 1) this.cart[index].quantity--;
+          else this.cart.splice(index, 1);
+          this.saveCart();
+        },
+
+        checkout() {
+          window.location.href = 'checkout.html';
+        },
+
+        saveCart() {
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+        },
+
+        loadCart() {
+          const saved = localStorage.getItem('cart');
+          if (saved) this.cart = JSON.parse(saved);
+        },
+
+        init() {
+          this.loadCart();
+          fetch('products.json')
+            .then(res => res.json())
+            .then(data => { this.products = data })
+            .catch(err => console.error("Failed to load products.json:", err));
+        }
+      }))
+    })
   </script>
+
 </body>
 </html>
