@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PB COLLECTION</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body x-data="store" class="bg-gray-100" x-init="init()">
+<body class="bg-gray-100">
 
   <!-- Announcement Bar -->
   <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium">
@@ -17,6 +17,8 @@
 
   <!-- Common Components -->
   <div id="header"></div>
+
+  <!-- Hero Section -->
   <section class="relative bg-cover bg-center h-72 md:h-96" style="background-image: url('Hero.JPG');">
     <div class="absolute inset-0 flex flex-col justify-end items-center text-center text-white p-4">
       <a href="#products" class="bg-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition">
@@ -34,18 +36,31 @@
   <div id="cart"></div>
   <div id="footer"></div>
 
+  <!-- Store Logic -->
   <script src="store.js"></script>
+
+  <!-- Load Components -->
   <script>
-    // Load shared components dynamically
     async function loadComponent(id, file) {
       const res = await fetch(`components/${file}`);
       const html = await res.text();
       document.getElementById(id).innerHTML = html;
     }
 
-    loadComponent("header", "header.html");
-    loadComponent("cart", "cart.html");
-    loadComponent("footer", "footer.html");
+    async function initPage() {
+      await Promise.all([
+        loadComponent("header", "header.html"),
+        loadComponent("cart", "cart.html"),
+        loadComponent("footer", "footer.html")
+      ]);
+      
+      // Now re-initialize Alpine with store.js attached
+      document.body.setAttribute("x-data", "store");
+      document.body.setAttribute("x-init", "init()");
+      Alpine.initTree(document.body);
+    }
+
+    initPage();
   </script>
 </body>
 </html>
