@@ -1,0 +1,19 @@
+<header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
+  <h1 class="text-xl font-bold">PB COLLECTION</h1>
+  <button @click="toggleCart()" class="relative">
+    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+    <span x-show="cartCount > 0"
+          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1"
+          x-text="cartCount"></span>
+  </button>
+</header>
+
+<!-- Navigation -->
+<nav class="bg-white shadow-sm">
+  <ul class="flex justify-center gap-6 py-3 text-gray-700 font-medium">
+    <li><a href="boys.html" class="hover:text-emerald-600">Boys</a></li>
+    <li><a href="girls.html" class="hover:text-emerald-600">Girls</a></li>
+    <li><a href="men.html" class="hover:text-emerald-600">Men</a></li>
+    <li><a href="women.html" class="hover:text-emerald-600">Women</a></li>
+  </ul>
+</nav>
