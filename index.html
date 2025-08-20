@@ -30,10 +30,17 @@
     🎉 Free Shipping on Orders Above ₹999!
   </div>
 
-  <!-- Header Placeholder -->
-<div id="header-component"></div>
+<header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
+  <h1 class="text-xl font-bold">PB COLLECTION</h1>
+  <button @click="toggleCart()" class="relative" aria-label="Open shopping cart">
+    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+    <span x-show="cartCount > 0"
+          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1"
+          x-text="cartCount"></span>
+  </button>
+</header>
 
-
+  
   <!-- Hero Section -->
   <section class="relative h-72 md:h-96 flex items-end justify-center text-center text-white">
     <img src="Hero.JPG" alt="Affordable Fashion at PB Collection" 
