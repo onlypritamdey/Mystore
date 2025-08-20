@@ -1,10 +1,11 @@
+// store.js
 document.addEventListener('alpine:init', () => {
   Alpine.data('store', () => ({
     products: [],
     cart: [],
     isCartOpen: false,
 
-    // --- Derived Values ---
+    // --- Cart Getters ---
     get cartCount() {
       return this.cart.reduce((sum, item) => sum + item.quantity, 0);
     },
@@ -12,11 +13,10 @@ document.addEventListener('alpine:init', () => {
       return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     },
 
-    // --- Cart Methods ---
+    // --- Cart Actions ---
     toggleCart() {
       this.isCartOpen = !this.isCartOpen;
     },
-
     addToCart(product) {
       let existing = this.cart.find(item => item.id === product.id);
       if (existing) {
@@ -26,22 +26,15 @@ document.addEventListener('alpine:init', () => {
       }
       this.saveCart();
     },
-
     increaseQty(index) {
       this.cart[index].quantity++;
       this.saveCart();
     },
-
     decreaseQty(index) {
-      if (this.cart[index].quantity > 1) {
-        this.cart[index].quantity--;
-      } else {
-        this.cart.splice(index, 1);
-      }
+      if (this.cart[index].quantity > 1) this.cart[index].quantity--;
+      else this.cart.splice(index, 1);
       this.saveCart();
     },
-
-    // --- Checkout ---
     checkout() {
       window.location.href = 'checkout.html';
     },
@@ -50,10 +43,24 @@ document.addEventListener('alpine:init', () => {
     saveCart() {
       localStorage.setItem('cart', JSON.stringify(this.cart));
     },
-
     loadCart() {
-      const saved = localStorage.getItem('cart');
-      if (saved) this.cart = JSON.parse(saved);
+      try {
+        const saved = localStorage.getItem('cart');
+        this.cart = saved ? JSON.parse(saved) : [];
+      } catch (e) {
+        this.cart = [];
+      }
+    },
+
+    // --- Helpers ---
+    getStars(rating) {
+      let stars = [];
+      for (let i = 1; i <= 5; i++) {
+        if (rating >= i) stars.push('full');
+        else if (rating >= i - 0.5) stars.push('half');
+        else stars.push('empty');
+      }
+      return stars;
     },
 
     // --- Init ---
