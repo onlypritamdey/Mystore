@@ -6,6 +6,19 @@
     "price": 899,
     "originalPrice": 1299,
     "rating": 4.2,
+    "stock": 25,
+    "description": "A stylish and comfortable casual shirt for men. Perfect for everyday wear.",
+    "highlights": [
+      "Soft cotton fabric",
+      "Regular fit",
+      "Machine washable",
+      "Breathable material"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Men+Shirt+Front",
+      "https://via.placeholder.com/400x300?text=Men+Shirt+Back",
+      "https://via.placeholder.com/400x300?text=Men+Shirt+Closeup"
+    ],
     "category": "Men",
     "reviews": [
       {
@@ -31,6 +44,19 @@
     "price": 1499,
     "originalPrice": 1999,
     "rating": 4.7,
+    "stock": 18,
+    "description": "Elegant saree with premium fabric and beautiful design. Perfect for festive and special occasions.",
+    "highlights": [
+      "Premium fabric",
+      "Lightweight & elegant",
+      "Comes with blouse piece",
+      "Hand wash recommended"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Saree+Full",
+      "https://via.placeholder.com/400x300?text=Saree+Pattern",
+      "https://via.placeholder.com/400x300?text=Saree+Blouse"
+    ],
     "category": "Women",
     "reviews": [
       {
@@ -56,6 +82,19 @@
     "price": 499,
     "originalPrice": 799,
     "rating": 4.3,
+    "stock": 30,
+    "description": "Trendy printed T-shirt for boys. Made with soft and breathable fabric.",
+    "highlights": [
+      "100% cotton",
+      "Trendy print",
+      "Comfortable fit",
+      "Easy care fabric"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Boy+Tshirt+Front",
+      "https://via.placeholder.com/400x300?text=Boy+Tshirt+Back",
+      "https://via.placeholder.com/400x300?text=Boy+Tshirt+Closeup"
+    ],
     "category": "Boys",
     "reviews": [
       {
@@ -81,6 +120,19 @@
     "price": 1299,
     "originalPrice": 1799,
     "rating": 4.6,
+    "stock": 22,
+    "description": "Beautiful party dress for girls with elegant design and comfortable fit.",
+    "highlights": [
+      "Soft fabric",
+      "Elegant party wear",
+      "Comfortable fit",
+      "Easy to wash"
+    ],
+    "gallery": [
+      "https://via.placeholder.com/400x300?text=Girl+Dress+Front",
+      "https://via.placeholder.com/400x300?text=Girl+Dress+Back",
+      "https://via.placeholder.com/400x300?text=Girl+Dress+Detail"
+    ],
     "category": "Girls",
     "reviews": [
       {
