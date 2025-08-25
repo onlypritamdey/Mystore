@@ -118,15 +118,18 @@
           <h2 class="font-semibold text-gray-800 truncate text-base" x-text="product.name"></h2>
         </a>
 
-        <div class="mt-1">
-          <p class="text-lg text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
-          <p class="text-sm text-gray-500 line-through" x-show="product.originalPrice > product.price">
-            ₹<span x-text="product.originalPrice"></span>
-          </p>
-          <p class="text-xs text-red-500 font-medium" x-show="product.originalPrice > product.price">
-            You save ₹<span x-text="product.originalPrice - product.price"></span>
-          </p>
-        </div>
+        <div class="mt-1 flex items-center space-x-2">
+  <p class="text-lg text-emerald-600 font-bold">₹<span x-text="product.price"></span></p>
+  <p class="text-sm text-gray-500 line-through" 
+     x-show="product.originalPrice > product.price">
+    ₹<span x-text="product.originalPrice"></span>
+  </p>
+  <span class="text-xs text-red-500 font-medium" 
+        x-show="product.originalPrice > product.price">
+    Save ₹<span x-text="product.originalPrice - product.price"></span>
+  </span>
+</div>
+
 
         <!-- Add to Cart -->
         <button @click="addToCart(product)"
