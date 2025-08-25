@@ -1,119 +1,102 @@
 [
   {
     "id": 1,
-    "name": "Men's Cotton Kurta",
-    "price": 1199,
-    "originalPrice": 1799,
-    "stock": 15,
-    "rating": 4.5,
-    "description": "A stylish and comfortable cotton kurta for men. Perfect for festive occasions and casual wear.",
-    "highlights": [
-      "100% Pure Cotton",
-      "Regular Fit",
-      "Available in Multiple Colors",
-      "Machine Washable"
-    ],
-    "gallery": [
-      "https://via.placeholder.com/500x600?text=Men+Kurta+Front",
-      "https://via.placeholder.com/500x600?text=Men+Kurta+Side",
-      "https://via.placeholder.com/500x600?text=Men+Kurta+Back"
-    ],
+    "name": "Men's Casual Shirt",
+    "image": "images/men-shirt.jpg",
+    "price": 899,
+    "originalPrice": 1299,
+    "rating": 4.2,
+    "category": "Men",
     "reviews": [
-      {"id": 1, "name": "Rohit S.", "date": "Aug 15, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Looks great and very comfortable!"},
-      {"id": 2, "name": "Aman P.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐", "comment": "Fabric quality is excellent."}
+      {
+        "id": 1,
+        "name": "Ravi K.",
+        "date": "Aug 20, 2025",
+        "stars": "⭐⭐⭐⭐",
+        "comment": "Nice fit and comfortable fabric."
+      },
+      {
+        "id": 2,
+        "name": "Amit P.",
+        "date": "Aug 18, 2025",
+        "stars": "⭐⭐⭐⭐⭐",
+        "comment": "Great quality for the price!"
+      }
     ]
   },
   {
     "id": 2,
-    "name": "Women's Floral Maxi Dress",
-    "price": 1599,
-    "originalPrice": 2499,
-    "stock": 20,
+    "name": "Women's Saree",
+    "image": "images/women-saree.jpg",
+    "price": 1499,
+    "originalPrice": 1999,
     "rating": 4.7,
-    "description": "Elegant floral maxi dress for women. Perfect for parties, dinners, and summer outings.",
-    "highlights": [
-      "Flowy Polyester Blend",
-      "Floral Print Design",
-      "Sleeveless, Maxi Length",
-      "Dry Clean Recommended"
-    ],
-    "gallery": [
-      "https://via.placeholder.com/500x600?text=Maxi+Dress+Front",
-      "https://via.placeholder.com/500x600?text=Maxi+Dress+Back",
-      "https://via.placeholder.com/500x600?text=Maxi+Dress+Detail"
-    ],
+    "category": "Women",
     "reviews": [
-      {"id": 1, "name": "Nisha R.", "date": "Aug 15, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Beautiful dress and fits perfectly."},
-      {"id": 2, "name": "Pooja K.", "date": "Aug 13, 2025", "stars": "⭐⭐⭐⭐", "comment": "Color is vibrant and fabric is soft."}
+      {
+        "id": 1,
+        "name": "Priya S.",
+        "date": "Aug 21, 2025",
+        "stars": "⭐⭐⭐⭐⭐",
+        "comment": "Beautiful fabric, exactly as shown."
+      },
+      {
+        "id": 2,
+        "name": "Sneha R.",
+        "date": "Aug 19, 2025",
+        "stars": "⭐⭐⭐⭐",
+        "comment": "Very elegant, but a little long."
+      }
     ]
   },
   {
     "id": 3,
-    "name": "Boys' Denim Jacket",
-    "price": 1399,
-    "originalPrice": 1999,
-    "stock": 10,
+    "name": "Boy's Printed T-Shirt",
+    "image": "images/boy-tshirt.jpg",
+    "price": 499,
+    "originalPrice": 799,
     "rating": 4.3,
-    "description": "Trendy denim jacket for boys. Stylish and durable for everyday wear.",
-    "highlights": [
-      "Premium Denim Fabric",
-      "Front Button Closure",
-      "Two Chest Pockets",
-      "Slim Fit Design"
-    ],
-    "gallery": [
-      "https://via.placeholder.com/500x600?text=Boys+Jacket+Front",
-      "https://via.placeholder.com/500x600?text=Boys+Jacket+Back"
-    ],
+    "category": "Boys",
     "reviews": [
-      {"id": 1, "name": "Kunal M.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "My son loves it, looks very stylish!"},
-      {"id": 2, "name": "Rita J.", "date": "Aug 12, 2025", "stars": "⭐⭐⭐⭐", "comment": "Good quality denim, worth the price."}
+      {
+        "id": 1,
+        "name": "Anita D.",
+        "date": "Aug 20, 2025",
+        "stars": "⭐⭐⭐⭐⭐",
+        "comment": "My son loved it!"
+      },
+      {
+        "id": 2,
+        "name": "Vikram L.",
+        "date": "Aug 19, 2025",
+        "stars": "⭐⭐⭐⭐",
+        "comment": "Cool design, good fabric."
+      }
     ]
   },
   {
     "id": 4,
-    "name": "Girls' Party Frock",
-    "price": 999,
-    "originalPrice": 1499,
-    "stock": 18,
-    "rating": 4.6,
-    "description": "Cute and elegant party frock for girls. Designed with lace and satin for special occasions.",
-    "highlights": [
-      "Soft Satin & Lace",
-      "Round Neck, Sleeveless",
-      "Knee-Length",
-      "Hand Wash Recommended"
-    ],
-    "gallery": [
-      "https://via.placeholder.com/500x600?text=Girls+Frock+Front",
-      "https://via.placeholder.com/500x600?text=Girls+Frock+Back"
-    ],
-    "reviews": [
-      {"id": 1, "name": "Meena D.", "date": "Aug 13, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Looks adorable on my daughter!"},
-      {"id": 2, "name": "Suresh K.", "date": "Aug 11, 2025", "stars": "⭐⭐⭐⭐", "comment": "Nice frock, fabric is comfortable."}
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Men's Slim Fit Jeans",
+    "name": "Girl's Party Dress",
+    "image": "images/girl-dress.jpg",
     "price": 1299,
-    "originalPrice": 1999,
-    "stock": 25,
-    "rating": 4.4,
-    "description": "Stylish slim fit jeans for men, designed for everyday comfort and durability.",
-    "highlights": [
-      "Stretchable Denim",
-      "Slim Fit",
-      "5-Pocket Design",
-      "Machine Washable"
-    ],
-    "gallery": [
-      "https://via.placeholder.com/500x600?text=Jeans+Front",
-      "https://via.placeholder.com/500x600?text=Jeans+Back"
-    ],
+    "originalPrice": 1799,
+    "rating": 4.6,
+    "category": "Girls",
     "reviews": [
-      {"id": 1, "name": "Rajesh T.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Perfect fit and looks amazing."},
-      {"id": 2, "name": "Deepak L.", "date": "Aug 12, 2025", "stars": "⭐⭐⭐⭐", "comment": "Comfortable and good quality."}
+      {
+        "id": 1,
+        "name": "Tina M.",
+        "date": "Aug 22, 2025",
+        "stars": "⭐⭐⭐⭐⭐",
+        "comment": "Very pretty dress, my daughter looked adorable!"
+      },
+      {
+        "id": 2,
+        "name": "Rohit P.",
+        "date": "Aug 20, 2025",
+        "stars": "⭐⭐⭐⭐",
+        "comment": "Good quality but slightly loose fit."
+      }
     ]
   }
 ]
