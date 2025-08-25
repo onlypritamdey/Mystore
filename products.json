@@ -1,126 +1,119 @@
 [
   {
     "id": 1,
-    "name": "Premium Smart Watch",
-    "price": 2999,
-    "originalPrice": 4999,
-    "stock": 8,
-    "rating": 4.6,
-    "description": "Stay connected and track your fitness with the Premium Smart Watch. Features HD AMOLED display, heart rate & SpO2 monitoring, Bluetooth calling, and 7-day battery life.",
+    "name": "Men's Cotton Kurta",
+    "price": 1199,
+    "originalPrice": 1799,
+    "stock": 15,
+    "rating": 4.5,
+    "description": "A stylish and comfortable cotton kurta for men. Perfect for festive occasions and casual wear.",
     "highlights": [
-      "1.75” HD AMOLED Display",
-      "7-Day Battery Life",
-      "Heart Rate & SpO2 Monitoring",
-      "Bluetooth Calling Support",
-      "1-Year Warranty"
+      "100% Pure Cotton",
+      "Regular Fit",
+      "Available in Multiple Colors",
+      "Machine Washable"
     ],
     "gallery": [
-      "https://via.placeholder.com/500x400?text=Smart+Watch",
-      "https://via.placeholder.com/500x400?text=Side+View",
-      "https://via.placeholder.com/500x400?text=Strap+Detail",
-      "https://via.placeholder.com/500x400?text=In+Box"
+      "https://via.placeholder.com/500x600?text=Men+Kurta+Front",
+      "https://via.placeholder.com/500x600?text=Men+Kurta+Side",
+      "https://via.placeholder.com/500x600?text=Men+Kurta+Back"
     ],
     "reviews": [
-      {"id":1, "name":"John D.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Amazing quality! Totally worth the price."},
-      {"id":2, "name":"Priya K.", "date":"Aug 9, 2025", "stars":"⭐⭐⭐⭐", "comment":"Looks premium and very comfortable to use."},
-      {"id":3, "name":"Arjun M.", "date":"Aug 8, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Fast delivery and great packaging. Love it!"}
+      {"id": 1, "name": "Rohit S.", "date": "Aug 15, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Looks great and very comfortable!"},
+      {"id": 2, "name": "Aman P.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐", "comment": "Fabric quality is excellent."}
     ]
   },
   {
     "id": 2,
-    "name": "Wireless Earbuds",
-    "price": 1499,
+    "name": "Women's Floral Maxi Dress",
+    "price": 1599,
     "originalPrice": 2499,
-    "stock": 15,
-    "rating": 4.4,
-    "description": "Enjoy crystal-clear sound and long battery life with Wireless Earbuds. Compact, comfortable, and perfect for music and calls on the go.",
+    "stock": 20,
+    "rating": 4.7,
+    "description": "Elegant floral maxi dress for women. Perfect for parties, dinners, and summer outings.",
     "highlights": [
-      "High-Fidelity Sound",
-      "Up to 6 Hours Playback",
-      "Touch Controls",
-      "Bluetooth 5.0",
-      "Water Resistant"
+      "Flowy Polyester Blend",
+      "Floral Print Design",
+      "Sleeveless, Maxi Length",
+      "Dry Clean Recommended"
     ],
     "gallery": [
-      "https://via.placeholder.com/400x300?text=Earbuds",
-      "https://via.placeholder.com/400x300?text=Charging+Case",
-      "https://via.placeholder.com/400x300?text=Side+View"
+      "https://via.placeholder.com/500x600?text=Maxi+Dress+Front",
+      "https://via.placeholder.com/500x600?text=Maxi+Dress+Back",
+      "https://via.placeholder.com/500x600?text=Maxi+Dress+Detail"
     ],
     "reviews": [
-      {"id":1, "name":"Sana R.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Best earbuds I have ever used!"},
-      {"id":2, "name":"Rahul S.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good sound quality, comfortable fit."}
+      {"id": 1, "name": "Nisha R.", "date": "Aug 15, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Beautiful dress and fits perfectly."},
+      {"id": 2, "name": "Pooja K.", "date": "Aug 13, 2025", "stars": "⭐⭐⭐⭐", "comment": "Color is vibrant and fabric is soft."}
     ]
   },
   {
     "id": 3,
-    "name": "Stylish Sneakers",
-    "price": 1999,
-    "originalPrice": 2999,
+    "name": "Boys' Denim Jacket",
+    "price": 1399,
+    "originalPrice": 1999,
     "stock": 10,
     "rating": 4.3,
-    "description": "Step up your style and comfort with these Stylish Sneakers. Perfect for casual wear and sports.",
+    "description": "Trendy denim jacket for boys. Stylish and durable for everyday wear.",
     "highlights": [
-      "Breathable Material",
-      "Lightweight & Comfortable",
-      "Non-Slip Sole",
-      "Durable Design"
+      "Premium Denim Fabric",
+      "Front Button Closure",
+      "Two Chest Pockets",
+      "Slim Fit Design"
     ],
     "gallery": [
-      "https://via.placeholder.com/400x300?text=Sneakers",
-      "https://via.placeholder.com/400x300?text=Side+View",
-      "https://via.placeholder.com/400x300?text=Sole+Detail"
+      "https://via.placeholder.com/500x600?text=Boys+Jacket+Front",
+      "https://via.placeholder.com/500x600?text=Boys+Jacket+Back"
     ],
     "reviews": [
-      {"id":1, "name":"Amit P.", "date":"Aug 12, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Super comfortable and stylish!"},
-      {"id":2, "name":"Neha M.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good value for money."}
+      {"id": 1, "name": "Kunal M.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "My son loves it, looks very stylish!"},
+      {"id": 2, "name": "Rita J.", "date": "Aug 12, 2025", "stars": "⭐⭐⭐⭐", "comment": "Good quality denim, worth the price."}
     ]
   },
   {
     "id": 4,
-    "name": "Backpack",
+    "name": "Girls' Party Frock",
     "price": 999,
     "originalPrice": 1499,
-    "stock": 20,
-    "rating": 4.5,
-    "description": "Carry all your essentials safely and comfortably with this versatile Backpack. Durable and spacious for daily use.",
+    "stock": 18,
+    "rating": 4.6,
+    "description": "Cute and elegant party frock for girls. Designed with lace and satin for special occasions.",
     "highlights": [
-      "Multiple Compartments",
-      "Water-Resistant Material",
-      "Ergonomic Design",
-      "Lightweight & Durable"
+      "Soft Satin & Lace",
+      "Round Neck, Sleeveless",
+      "Knee-Length",
+      "Hand Wash Recommended"
     ],
     "gallery": [
-      "https://via.placeholder.com/400x300?text=Backpack",
-      "https://via.placeholder.com/400x300?text=Inside+Compartments",
-      "https://via.placeholder.com/400x300?text=Side+View"
+      "https://via.placeholder.com/500x600?text=Girls+Frock+Front",
+      "https://via.placeholder.com/500x600?text=Girls+Frock+Back"
     ],
     "reviews": [
-      {"id":1, "name":"Ravi K.", "date":"Aug 10, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Perfect backpack for daily use!"},
-      {"id":2, "name":"Tina L.", "date":"Aug 9, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good quality and spacious."}
+      {"id": 1, "name": "Meena D.", "date": "Aug 13, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Looks adorable on my daughter!"},
+      {"id": 2, "name": "Suresh K.", "date": "Aug 11, 2025", "stars": "⭐⭐⭐⭐", "comment": "Nice frock, fabric is comfortable."}
     ]
   },
   {
     "id": 5,
-    "name": "Smart Fitness Band",
+    "name": "Men's Slim Fit Jeans",
     "price": 1299,
     "originalPrice": 1999,
-    "stock": 12,
-    "rating": 4.2,
-    "description": "Track your health and fitness easily with the Smart Fitness Band. Features sleep tracking, step counter, and notifications.",
+    "stock": 25,
+    "rating": 4.4,
+    "description": "Stylish slim fit jeans for men, designed for everyday comfort and durability.",
     "highlights": [
-      "Step & Sleep Tracking",
-      "Heart Rate Monitoring",
-      "Notifications & Alerts",
-      "Long Battery Life"
+      "Stretchable Denim",
+      "Slim Fit",
+      "5-Pocket Design",
+      "Machine Washable"
     ],
     "gallery": [
-      "https://via.placeholder.com/400x300?text=Fitness+Band",
-      "https://via.placeholder.com/400x300?text=Side+View",
-      "https://via.placeholder.com/400x300?text=Wrist+View"
+      "https://via.placeholder.com/500x600?text=Jeans+Front",
+      "https://via.placeholder.com/500x600?text=Jeans+Back"
     ],
     "reviews": [
-      {"id":1, "name":"Meera S.", "date":"Aug 12, 2025", "stars":"⭐⭐⭐⭐", "comment":"Good fitness tracker for beginners."},
-      {"id":2, "name":"Vikram D.", "date":"Aug 11, 2025", "stars":"⭐⭐⭐⭐⭐", "comment":"Excellent value and works as expected!"}
+      {"id": 1, "name": "Rajesh T.", "date": "Aug 14, 2025", "stars": "⭐⭐⭐⭐⭐", "comment": "Perfect fit and looks amazing."},
+      {"id": 2, "name": "Deepak L.", "date": "Aug 12, 2025", "stars": "⭐⭐⭐⭐", "comment": "Comfortable and good quality."}
     ]
   }
 ]
